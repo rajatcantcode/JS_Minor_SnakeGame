@@ -46,19 +46,25 @@ body {
   grid-template-columns: repeat(18, 1fr);
   background-color: #e8d4c5;
 }
-#scoreBox {
+#scorebox {
   position: absolute;
   top: 10%;
   left: 35%;
   transform: translate(-50%, -50%);
   font-size: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#high-scoreBox {
+#high-scorebox {
   position: absolute;
   top: 10%;
   left: 60%;
   transform: translate(-50%, -50%);
   font-size: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .snake {
   background-color: #6cbb3c;

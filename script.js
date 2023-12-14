@@ -32,21 +32,29 @@ function main(currenttime) {
   // console.log(currenttime);
 }
 
+var displayscore = document.querySelector("#scorebox h2");
+var hiscoreval = 0;
 function gameEngine() {
   // ---------------------------Part 1 : Upadating the snake array & food---------------------------
   if (isCollide(snakearr)) {
     gameOverSound.play();
-
     inputDir = { x: 0, y: 0 };
     alert("GAME OVER! press ok to play again !");
     snakearr = [{ x: 13, y: 15 }];
     score = 0;
+    displayscore.textContent = 0;
   }
   //------>IF THE SNAKE HAVE EATEN THE FOOD - increase score and regenerate food and increase size of snake
   // head of snake = food location
   if (snakearr[0].y === food.y && snakearr[0].x === food.x) {
     foodSound.play();
     score += 1;
+    if (score > hiscoreval) {
+      hiscoreval = score;
+      localStorage.setItem("hiscore", JSON.stringify(hiscoreval));
+      hiscoreBox.textContent = hiscoreval;
+    }
+    displayscore.textContent = score;
     // unshift add an element in array
     snakearr.unshift({
       x: snakearr[0].x + inputDir.x,
@@ -67,7 +75,6 @@ function gameEngine() {
   //this is for the head of the snake
   snakearr[0].x += inputDir.x;
   snakearr[0].y += inputDir.y;
-
 
   //---------------------------Part 2 : Dispaly the snake and food---------------------------
   game.innerHTML = "";
@@ -113,6 +120,16 @@ function isCollide(snake) {
   return false;
 }
 //-------------------------------main logic of game 👇 ahd created loop in 'main' fxn-------------------------------
+var hiscoreBox = document.querySelector("#high-scorebox h2");
+let hiscore = localStorage.getItem("hiscore");
+if (hiscore === null) {
+  hiscoreval = 0;
+  localStorage.setItem("hiscore", JSON.stringify(hiscoreval));
+} else {
+  hiscoreval = JSON.parse(hiscore);
+  hiscoreBox.innerHTML = hiscore;
+}
+
 window.requestAnimationFrame(main);
 window.addEventListener("keydown", (e) => {
   // Press any key to Start the game
