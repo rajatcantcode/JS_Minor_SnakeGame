@@ -1,0 +1,76 @@
+@font-face {
+  font-family: GilroyDark;
+  src: url(./assets/Gilroy-ExtraBold.otf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: GilroyDark;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  overflow: hidden; /* Add this to prevent content overflow */
+}
+
+#main img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#game {
+  height: 40vw;
+  width: 40vw;
+  background-color: rgba(249, 100, 100, 0);
+  position: absolute;
+  border: 10px solid black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-rows: repeat(18, 1fr);
+  /* 1fr means fractional unit ->  It represents a fraction of the available space in the grid container  */
+  grid-template-columns: repeat(18, 1fr);
+  background-color: #e8d4c5;
+}
+#scoreBox {
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  font-size: 2vw;
+}
+#high-scoreBox {
+  position: absolute;
+  top: 10%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  font-size: 2vw;
+}
+.snake {
+  background-color: #6cbb3c;
+  border-radius: 12px;
+}
+.head {
+  background-color: #1c3c09;
+  transform: scale(1.02);
+  border-radius: 9px;
+}
+.food {
+  background-color: red;
+  border: 0.25vmin solid black;
+  border-radius: 50%;
+}
